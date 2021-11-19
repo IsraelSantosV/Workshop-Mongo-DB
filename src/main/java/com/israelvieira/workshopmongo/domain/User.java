@@ -3,51 +3,55 @@ package com.israelvieira.workshopmongo.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String m_Id;
-	private String m_Name;
-	private String m_Email;
 	
-	public User() {
-		
-	}
+	@Id
+	private String id;
+	private String name;
+	private String email;
+	
+	public User() { }
 
-	public User(String m_Id, String m_Name, String m_Email) {
+	public User(String id, String name, String email) {
 		super();
-		this.m_Id = m_Id;
-		this.m_Name = m_Name;
-		this.m_Email = m_Email;
+		this.id = id;
+		this.name = name;
+		this.email = email;
 	}
 
 	public String getId() {
-		return m_Id;
+		return id;
 	}
 
-	public void setId(String m_Id) {
-		this.m_Id = m_Id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
-		return m_Name;
+		return name;
 	}
 
-	public void setName(String m_Name) {
-		this.m_Name = m_Name;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getEmail() {
-		return m_Email;
+		return email;
 	}
 
-	public void setEmail(String m_Email) {
-		this.m_Email = m_Email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(m_Id);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -59,7 +63,7 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(m_Id, other.m_Id);
+		return Objects.equals(id, other.id);
 	}
 
 }
